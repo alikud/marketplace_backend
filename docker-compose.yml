@@ -3,7 +3,7 @@ services:
   mongo:
     image: mongo:latest
     container_name: mongodb
-    restart: always
+#    restart: always
     hostname: mongodb
     ports:
       - 27017:27017
@@ -15,7 +15,7 @@ services:
 
   mongo-express:
     image: mongo-express
-    restart: always
+#    restart: always
     ports:
       - 8081:8081
     environment:
@@ -23,6 +23,9 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${ME_CONFIG_MONGODB_ADMINPASSWORD}
       ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL}
 #        like mongodb://root:example@mongo:27017/
+
+    networks:
+      - database-network
 
 #  app:
 #    build:
